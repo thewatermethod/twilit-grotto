@@ -1,0 +1,13 @@
+---
+const { link, title } = Astro.props;
+---
+
+<div class="cthulhu-dice-link">
+  <a href={link} target="_blank" rel="noopener noreferrer">
+    <img
+      src="/cthulhu-dice-logo.webp"
+      alt={`Buy ${title} on Cthulhu Dice`}
+      width="206"
+    />
+  </a>
+</div>

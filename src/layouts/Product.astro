@@ -1,0 +1,131 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ItchEmbed from "../components/ItchEmbed.astro";
+import DriveThruLink from "../components/DriveThruLink.astro";
+import CthulhuDiceLink from "../components/CthulhuDiceLink.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+type Props = CollectionEntry<"product">["data"];
+
+const {
+  title,
+  description,
+  system,
+  pubDate,
+  heroImage,
+  author,
+  itchLink,
+  driveThruLink,
+  cthulhuDiceLink,
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      main {
+        width: calc(100% - 2em);
+        max-width: 100%;
+        margin: 0;
+      }
+      .hero-image-column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1em;
+        align-items: center;
+      }
+      .hero-image {
+        box-shadow: var(--box-shadow);
+      }
+      .hero-image-column--title {
+        font-size: 1em;
+      }
+
+      article {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
+      .prose {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+        color: rgb(var(--gray-dark));
+      }
+
+      .title {
+        margin-bottom: 1em;
+        padding: 1em 0;
+        text-align: center;
+        line-height: 1;
+      }
+      .title h1 {
+        margin: 0 0 0.5em 0;
+      }
+      .supertitle {
+        margin-bottom: 0.5em;
+        color: rgb(var(--gray));
+      }
+      .pub-date {
+        font-style: italic;
+      }
+
+      .author {
+        margin-bottom: 0.5em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+        <div class="hero-image-column">
+          {heroImage && <img src={heroImage} class="hero-image" alt="" />}
+          <h2 class="supertitle hero-image-column--title">Where to buy</h2>
+          {
+            cthulhuDiceLink && (
+              <CthulhuDiceLink link={cthulhuDiceLink} title={title} />
+            )
+          }
+          {
+            driveThruLink && (
+              <DriveThruLink link={driveThruLink} title={title} />
+            )
+          }
+        </div>
+        <div class="prose">
+          <div class="title">
+            <div class="supertitle">
+              {
+                system && (
+                  <div class="system">
+                    <span>{system}</span>
+                  </div>
+                )
+              }
+            </div>
+            <h1>{title}</h1>
+            {author && <p class="author">{author}</p>}
+            {
+              pubDate && (
+                <div class="pub-date">
+                  <FormattedDate date={pubDate} />
+                </div>
+              )
+            }
+            <hr />
+          </div>
+          <slot />
+          {itchLink && <ItchEmbed link={itchLink} title={title} />}
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

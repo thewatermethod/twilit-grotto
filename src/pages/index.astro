@@ -1,0 +1,71 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import ButtondownForm from "../components/ButtondownForm.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      .product-home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .product-home--image {
+        transition: transform 0.2s ease-in-out;
+      }
+      .product-home--image:hover {
+        transform: scale(1.05);
+      }
+      .sell-me-a-grotto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+      }
+      .sell-me-a-grotto h3 {
+        color: #fff;
+      }
+      .newest-release {
+        margin: 2em 0 1em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main class="full-width">
+      <div class="sell-me-a-grotto">
+        <p>
+          Twilit Grotto is a purveyor of fine RPG products, production, and web
+          experiences.
+        </p>
+        <h3>Stay in the loop</h3>
+        <ButtondownForm />
+      </div>
+      <h2 class="newest-release">Newest release</h2>
+      <div class="product-home">
+        <a href={`/product/pale-conjure/`}>
+          <img
+            src="/PaleConjureHero.png"
+            class="product-home--image"
+            alt="Pale Conjure, an adventure for Cthulhu Eternal"
+          />
+        </a>
+        <p>
+          A Jazz Age Adventure for Cthulhu Eternal<br />
+        </p>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

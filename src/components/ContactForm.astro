@@ -1,0 +1,42 @@
+<style>
+  label,
+  input,
+  textarea {
+    display: block;
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  textarea {
+    height: 240px;
+  }
+
+  label:has(+ [required]):after {
+    content: " *";
+    color: red; // todo, replace with css custom prop
+  }
+  
+</style>
+<form netlify="netlify" action="/post" netlify-honeypot="bot-field" data-netlify-recaptcha="true">
+  <label for="name">Name</label>
+  <input required type="text" id="name" name="name" />
+  <label for="email">Email</label>
+  <input required type="email" id="email" name="email" />
+  <label for="portfolio">Portfolio</label>
+  <input required type="url" id="portfolio" name="portfolio" />
+  <label for="message">Message</label>
+  <textarea required id="message" name="message"></textarea>
+  <input type="hidden" name="form-name" value="contact" />
+  <div hidden>
+    <label for="bot-field">Don't fill this out if you're human:</label>
+    <input name="bot-field" id="bot-field" />
+  </div>
+  <div data-netlify-recaptcha="true"></div>
+  <input type="submit" value="Submit" />
+</form>

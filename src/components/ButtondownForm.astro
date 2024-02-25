@@ -1,0 +1,60 @@
+<style>
+  .embeddable-buttondown-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .embeddable-buttondown-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .embeddable-buttondown-form input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  .embeddable-buttondown-form input[type="submit"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .embeddable-buttondown-form input[type="submit"]:hover {
+    background-color: #eee;
+  }
+
+  .embeddable-buttondown-form p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .embeddable-buttondown-form p a {
+    color: var(--gray-gradient);
+  }
+</style>
+<form
+  action="https://buttondown.email/api/emails/embed-subscribe/twilitgrotto"
+  method="post"
+  target="popupwindow"
+  onsubmit="window.open('https://buttondown.email/twilitgrotto', 'popupwindow')"
+  class="embeddable-buttondown-form"
+>
+  <label for="bd-email">Enter your email</label>
+  <input type="email" name="email" id="bd-email" />
+
+  <input type="submit" value="Subscribe" />
+  <p>
+    <a href="https://buttondown.email/refer/twilitgrotto" target="_blank"
+      >Powered by Buttondown.</a
+    >
+  </p>
+</form>

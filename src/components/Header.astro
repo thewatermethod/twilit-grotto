@@ -1,0 +1,67 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import { Image } from "astro:assets";
+import Sigil from "../sigilum.gif";
+---
+
+<header>
+  <nav>
+    <div class="logo-and-title">
+      <Image src={Sigil} alt="Sigilum Dei" height="70" width="70" />
+      <h1><a href="/">{SITE_TITLE}</a></h1>
+    </div>
+    <div class="internal-links">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/product">Products</HeaderLink>
+      <HeaderLink href="/work-with-us">Work with Us</HeaderLink>
+    </div>
+  </nav>
+</header>
+<style>
+  header {
+    margin: 0;
+    padding: 0 1em;
+    background: white;
+    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+  }
+  h1 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  h1 a,
+  h1 a.active {
+    transition: text-shadow 0.5s;
+    text-decoration: none;
+  }
+
+  h1 a:hover {
+    text-shadow: 0px 1px 0px var(--accent);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo-and-title {
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+  }
+  .logo-and-title img:hover {
+    transform: rotate(360deg);
+    transition: transform 3s;
+  }
+  nav a {
+    padding: 1em 0.5em;
+    color: var(--black);
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+  }
+  nav a.active {
+    text-decoration: none;
+    border-bottom-color: var(--accent);
+  }
+</style>
