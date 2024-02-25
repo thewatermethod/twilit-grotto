@@ -19,11 +19,15 @@
 
   label:has(+ [required]):after {
     content: " *";
-    color: red; // todo, replace with css custom prop
+    color: var(--error-red); /* todo: replace with CSS custom prop */
   }
-  
 </style>
-<form netlify="netlify" action="/post" netlify-honeypot="bot-field" data-netlify-recaptcha="true">
+<form
+  netlify="netlify"
+  action="/post"
+  netlify-honeypot="bot-field"
+  data-netlify-recaptcha="true"
+>
   <label for="name">Name</label>
   <input required type="text" id="name" name="name" />
   <label for="email">Email</label>
