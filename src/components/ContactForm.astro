@@ -1,3 +1,7 @@
+---
+const { formName = "Contact us" } = Astro.props;
+---
+
 <style>
   label,
   input,
@@ -23,8 +27,9 @@
   }
 </style>
 <form
-  netlify="netlify"
-  action="/post"
+  name={formName}
+  data-netlify="true"
+  method="post"
   netlify-honeypot="bot-field"
   data-netlify-recaptcha="true"
 >

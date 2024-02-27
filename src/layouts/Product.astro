@@ -7,6 +7,7 @@ import ItchEmbed from "../components/ItchEmbed.astro";
 import DriveThruLink from "../components/DriveThruLink.astro";
 import CthulhuDiceLink from "../components/CthulhuDiceLink.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import PageTitle from "../components/PageTitle.astro";
 
 type Props = CollectionEntry<"product">["data"];
 
@@ -41,15 +42,24 @@ const {
       }
       .hero-image {
         box-shadow: var(--box-shadow);
+        transition: filter 0.67s cubic-bezier(0.4, 0, 0.2, 1);
       }
+
+      .hero-image:hover {
+        filter: invert(100%);
+      }
+
       .hero-image-column--title {
         font-size: 1em;
       }
 
-      article {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
+      @media screen and (min-width: 1200px) {
+        article {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+        }
       }
+
       .prose {
         width: 720px;
         max-width: calc(100% - 2em);
@@ -57,15 +67,11 @@ const {
         padding: 1em;
         color: rgb(var(--gray-dark));
       }
-
       .title {
         margin-bottom: 1em;
         padding: 1em 0;
         text-align: center;
         line-height: 1;
-      }
-      .title h1 {
-        margin: 0 0 0.5em 0;
       }
       .supertitle {
         margin-bottom: 0.5em;
@@ -85,6 +91,30 @@ const {
     <Header />
     <main>
       <article>
+        <div class="prose">
+          <div class="title">
+            <div class="supertitle">
+              {
+                system && (
+                  <div class="system">
+                    <span>{system}</span>
+                  </div>
+                )
+              }
+            </div>
+            <PageTitle>{title}</PageTitle>
+            {author && <p class="author">{author}</p>}
+            {
+              pubDate && (
+                <div class="pub-date">
+                  <FormattedDate date={pubDate} />
+                </div>
+              )
+            }
+            <hr />
+          </div>
+          <slot />
+        </div>
         <div class="hero-image-column">
           {heroImage && <img src={heroImage} class="hero-image" alt="" />}
           <h2 class="supertitle hero-image-column--title">Where to buy</h2>
@@ -98,30 +128,7 @@ const {
               <DriveThruLink link={driveThruLink} title={title} />
             )
           }
-        </div>
-        <div class="prose">
-          <div class="title">
-            <div class="supertitle">
-              {
-                system && (
-                  <div class="system">
-                    <span>{system}</span>
-                  </div>
-                )
-              }
-            </div>
-            <h1>{title}</h1>
-            {author && <p class="author">{author}</p>}
-            {
-              pubDate && (
-                <div class="pub-date">
-                  <FormattedDate date={pubDate} />
-                </div>
-              )
-            }
-            <hr />
-          </div>
-          <slot />
+
           {itchLink && <ItchEmbed link={itchLink} title={title} />}
         </div>
       </article>

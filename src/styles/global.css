@@ -48,10 +48,10 @@ h6 {
   line-height: 1.2;
 }
 h1 {
-  font-size: 3.052em;
+  font-size: clamp(1.75rem, 0.1875rem + 5vw, 3.052em);
 }
 h2 {
-  font-size: 2.441em;
+  font-size: clamp(1.75rem, -0.0625rem + 5vw, 2.441em);
 }
 h3 {
   font-size: 1.953em;
@@ -114,14 +114,6 @@ blockquote {
 hr {
   border: none;
   border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
-  body {
-    font-size: 18px;
-  }
-  main {
-    padding: 1em;
-  }
 }
 
 .sr-only {

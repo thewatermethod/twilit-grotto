@@ -1,0 +1,94 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { Image } from "astro:assets";
+import MenuToggle from "../assets/menu-toggle.svg";
+import CloseToggle from "../assets/close-toggle.svg";
+---
+
+<style>
+  .menu-toggle {
+    display: none;
+    background: none;
+  }
+  .internal-links {
+    display: flex;
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    .internal-links {
+      display: none;
+      transition: opacity 1s ease-in-out;
+      background: white;
+    }
+    .menu-toggle {
+      display: block;
+    }
+
+    body:has(.internal-links.show) {
+      overflow: hidden;
+    }
+
+    .internal-links.show {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.88);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+    }
+    .internal-links.show a {
+      color: white;
+      font-size: 2rem;
+      padding: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    .internal-links.show a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .internal-links.show + .menu-toggle {
+      background: white;
+      z-index: 200;
+    }
+
+    .internal-links + .menu-toggle [alt="Close Menu"] {
+      display: none;
+    }
+
+    .internal-links.show + .menu-toggle [alt="Close Menu"] {
+      display: block;
+    }
+
+    .internal-links.show + .menu-toggle [alt="Open Menu"] {
+      display: none;
+    }
+  }
+</style>
+<script>
+  const menuToggle = document.querySelector("#menuToggle");
+  if (menuToggle) {
+    menuToggle.addEventListener("click", function () {
+      const internalLinks = document.querySelector(".internal-links");
+      if (internalLinks) {
+        internalLinks.classList.toggle("show");
+      }
+    });
+  }
+</script>
+
+<div class="internal-links" transition:animate="slide">
+  <HeaderLink href="/">Home</HeaderLink>
+  <HeaderLink href="/product">Products</HeaderLink>
+  <HeaderLink href="/work-with-us">Work with Us</HeaderLink>
+</div>
+<button id="menuToggle" class="menu-toggle">
+  <Image src={MenuToggle} alt="Open Menu" height="30" width="30" />
+  <Image src={CloseToggle} alt="Close Menu" height="30" width="30" />
+</button>

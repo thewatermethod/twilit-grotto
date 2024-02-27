@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import PageTitle from "../components/PageTitle.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import ContactForm from "../components/ContactForm.astro";
 ---
@@ -15,7 +16,7 @@ import ContactForm from "../components/ContactForm.astro";
     <Header title={SITE_TITLE} />
 
     <main>
-      <h1>Work in the Grotto</h1>
+      <PageTitle>Work in the Grotto</PageTitle>
       <p>
         If you're an artist, editor, or writer working in the tabletop space,
         send me a link to your portfolio or drop me a line! I'm always looking

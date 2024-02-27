@@ -1,8 +1,11 @@
 ---
-const { link } = Astro.props;
+import { Image } from "astro:assets";
+import ItchBadge from "../assets/itchbadge.svg";
+const { link, title } = Astro.props;
 ---
 
-<iframe src="https://itch.io/embed/2490315" width="552" height="167"
-  ><a href={link}>Pale Conjure: an adventure for Cthulhu Eternal by
-  thewatermethod</a></iframe
->
+<div class="itch-link">
+  <a href={link} target="_blank" rel="noopener noreferrer">
+    <Image src={ItchBadge} alt={`Buy ${title} on Itch.io`} width="200" />
+  </a>
+</div>
