@@ -16,6 +16,7 @@
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
   --content-width: 720px;
   --error-red: #ff0033;
+  --purped: #6f42c1;
 }
 body {
   font-family: "Libre Baskerville", serif;
