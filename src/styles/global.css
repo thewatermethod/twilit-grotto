@@ -4,6 +4,17 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+@font-face {
+  font-family: "Alegreya";
+  src: url("Alegreya-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Alegreya";
+  src: url("Alegreya-Italic-VariableFont_wght.ttf");
+  font-style: italic;
+}
+
 :root {
   --accent: #2337ff;
   --accent-dark: #000d8a;
@@ -19,7 +30,7 @@
   --purped: #6f42c1;
 }
 body {
-  font-family: "Libre Baskerville", serif;
+  font-family: "Alegreya", serif;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -47,6 +58,11 @@ h6 {
   margin: 0 0 0.5rem 0;
   color: rgb(var(--black));
   line-height: 1.2;
+}
+h1,
+h2,
+h3 {
+  font-family: "Libre Baskerville", serif;
 }
 h1 {
   font-size: clamp(1.75rem, 0.1875rem + 5vw, 3.052em);

@@ -2,7 +2,7 @@
 title: Pale Conjure
 description: "A Jazz Age Adventure"
 pubDate: "Jan 01 2024"
-heroImage: "/PaleConjureHero.png"
+heroImage: "/PaleConjureCover.jpg"
 author: Matt Bevilacqua
 collaborators: [Gino Vasconcelos, M. Desouza]
 printPrice: $9.99

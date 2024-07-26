@@ -4,6 +4,23 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import ButtondownForm from "../components/ButtondownForm.astro";
+
+const featuredProducts = [
+  {
+    imageSrc: "/MothCoverOptimized.jpg",
+    imageAlt: "The Giant Moth that Awaits Us All for Dungeon Crawl Classics",
+    path: "/product/giant-moth-that-awaits-us-all",
+    description: "An End of the World Adventure for DCC",
+    title: "The Giant Moth that Awaits Us All",
+  },
+  {
+    imageSrc: "/PaleConjureCover.jpg",
+    imageAlt: "Pale Conjure, an adventure for Cthulhu Eternal",
+    path: "/product/pale-conjure/",
+    description: "A Jazz Age Adventure for Cthulhu Eternal",
+    title: "Pale Conjure",
+  },
+];
 ---
 
 <!doctype html>
@@ -16,6 +33,12 @@ import ButtondownForm from "../components/ButtondownForm.astro";
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin: 0 auto 1em;
+        max-width: 600px;
+      }
+
+      .product-home p {
+        text-align: center;
       }
       .product-home--image {
         transition: transform 0.2s ease-in-out;
@@ -23,6 +46,7 @@ import ButtondownForm from "../components/ButtondownForm.astro";
       .product-home--image:hover {
         transform: scale(1.05);
       }
+
       .sell-me-a-grotto {
         display: flex;
         flex-direction: column;
@@ -31,40 +55,40 @@ import ButtondownForm from "../components/ButtondownForm.astro";
         background-color: #333;
         color: #fff;
         padding: 1rem;
+        margin-bottom: 1em;
       }
       .sell-me-a-grotto h3 {
         color: #fff;
       }
-      .newest-release {
-        margin: 2em 0 1em;
-        text-align: center;
-      }
     </style>
   </head>
   <body>
-    <Header title={SITE_TITLE} />
+    <Header />
     <main class="full-width">
       <div class="sell-me-a-grotto">
         <p>
-          Twilit Grotto is a purveyor of fine RPG products, production, and web
-          experiences.
+          {SITE_TITLE} is a purveyor of fine RPG products, production, and web experiences.
         </p>
         <h3>Stay in the loop</h3>
         <ButtondownForm />
       </div>
-      <h2 class="newest-release">Newest release</h2>
-      <div class="product-home">
-        <a href={`/product/pale-conjure/`}>
-          <img
-            src="/PaleConjureHero.png"
-            class="product-home--image"
-            alt="Pale Conjure, an adventure for Cthulhu Eternal"
-          />
-        </a>
-        <p>
-          A Jazz Age Adventure for Cthulhu Eternal<br />
-        </p>
-      </div>
+      {
+        featuredProducts.map((product) => (
+          <div class="product-home">
+            <a href={product.path}>
+              <img
+                src={product.imageSrc}
+                class="product-home--image"
+                alt={product.imageAlt}
+              />
+            </a>
+            <p>
+              {product.description}
+              <br />
+            </p>
+          </div>
+        ))
+      }
     </main>
     <Footer />
   </body>
