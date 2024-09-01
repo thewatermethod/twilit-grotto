@@ -2,14 +2,19 @@
 import Menu from "./Menu.astro";
 import { SITE_TITLE } from "../consts";
 import { Image } from "astro:assets";
-import Sigil from "../assets/sigilum.gif";
+import Twg from "../assets/twg.png";
 ---
 
 <header>
   <nav>
     <div class="logo-and-title">
       <a href="/">
-        <Image src={Sigil} alt="Sigilum Dei" height="70" width="70" /></a
+        <Image
+          src={Twg}
+          alt="A weird little guy for my weird little guys"
+          height="70"
+          width="70"
+        /></a
       >
       <h1><a href="/">{SITE_TITLE}</a></h1>
     </div>
@@ -60,8 +65,8 @@ import Sigil from "../assets/sigilum.gif";
     display: flex;
   }
   .logo-and-title img:hover {
-    transform: rotate(360deg);
-    transition: transform 3s;
+    transform: rotate(45deg);
+    transition: transform 2s;
   }
   nav a {
     padding: 0 0.5em;
