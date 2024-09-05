@@ -1,0 +1,14 @@
+---
+const { link, title } = Astro.props;
+---
+
+<div class="drive-thru-embed">
+  <a href={link} target="_blank" rel="noopener noreferrer">
+    <img
+      src="/ggames.png"
+      alt={`Buy ${title} at the Goodman Games webstore`}
+      height="36"
+      width="206"
+    />
+  </a>
+</div>

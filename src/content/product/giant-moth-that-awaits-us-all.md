@@ -12,7 +12,7 @@ itchLink: https://thewatermethod.itch.io/the-giant-moth-that-awaits-us-all
 system: Dungeon Crawl Classics
 driveThruLink: https://www.drivethrurpg.com/en/product/488711/The-Giant-Moth-That-Awaits-Us-All-A-Level-1-Adventure-for-Dungeon-Crawl-Classics
 cthulhuDiceLink: https://cthulhudice.com/product/the-giant-moth-that-awaits-us-all-dcc/
-# goodmanGamesLink:
+goodmanGamesLink: https://goodman-games.com/store/product/the-giant-moth-that-awaits-us-all-print-pdf/
 ---
 
 Explore the far future, a world where:

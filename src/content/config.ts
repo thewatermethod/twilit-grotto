@@ -30,6 +30,7 @@ const product = defineCollection({
     driveThruLink: z.string().optional(),
     itchLink: z.string().optional(),
     cthulhuDiceLink: z.string().optional(),
+    goodmanGamesLink: z.string().optional(),
     printPrice: z.string().optional(),
     printStock: z.number().optional(),
     tags: z.array(z.string()).optional(),
