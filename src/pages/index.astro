@@ -55,11 +55,17 @@ const featuredProducts = [
       }
 
       .product-home--container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1em;
-        margin: 0 1em;
+        margin: 1em;
       }
+      @media (min-width: 768px) {
+        .product-home--container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1em;
+          margin: 0 1em;
+        }
+      }
+
       .sell-me-a-grotto {
         display: flex;
         flex-direction: column;
