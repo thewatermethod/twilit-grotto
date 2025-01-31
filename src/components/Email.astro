@@ -1,0 +1,62 @@
+---
+const { email } = Astro.props;
+---
+
+<li class="email-item">
+  <article>
+    <h3>
+      <a href={email.absolute_url} target="_blank" rel="noopener noreferrer">
+        {email.subject}
+      </a>
+    </h3>
+    <p class="email-date">
+      {
+        new Date(email.publish_date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }
+    </p>
+    <p class="email-description">{email.description}</p>
+  </article>
+</li>
+
+<style>
+  article {
+    /* card */
+    border: 1px solid #666;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .email-item {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+  }
+
+  .email-item:last-child {
+    border-bottom: none;
+  }
+
+  .email-item h3 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .email-item a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .email-item a:hover {
+    color: #666;
+  }
+
+  .email-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+</style>

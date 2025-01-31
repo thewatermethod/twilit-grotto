@@ -14,6 +14,7 @@ import CloseToggle from "../assets/close-toggle.svg";
     display: flex;
     gap: 1rem;
   }
+
   @media (max-width: 768px) {
     .internal-links {
       display: none;
@@ -86,7 +87,31 @@ import CloseToggle from "../assets/close-toggle.svg";
 <div class="internal-links" transition:animate="slide">
   <HeaderLink href="/">Home</HeaderLink>
   <HeaderLink href="/product">Products</HeaderLink>
+  <HeaderLink href="https://buttondown.com/twilitgrotto/archive/"
+    >Newsletter</HeaderLink
+  >
   <HeaderLink href="/work-with-us">Work with Us</HeaderLink>
+  <HeaderLink
+    class="header-link--icon"
+    href="https://buttondown.com/twilitgrotto/rss"
+    aria-label="RSS feed"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+  </HeaderLink>
 </div>
 <button id="menuToggle" class="menu-toggle">
   <Image src={MenuToggle} alt="Open Menu" height="30" width="30" />

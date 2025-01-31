@@ -3,31 +3,9 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import ButtondownForm from "../components/ButtondownForm.astro";
-
-const featuredProducts = [
-  {
-    imageSrc: "/PriceCoverOptimized.jpg",
-    imageAlt: "The Price of Progress, an adventure for Cthulhu Eternal",
-    path: "/product/price-of-progress",
-    description: "An Space Age Adventure for Cthulhu Eternal",
-    title: "The Price of Progress",
-  },
-  {
-    imageSrc: "/MothCoverOptimized.jpg",
-    imageAlt: "The Giant Moth that Awaits Us All for Dungeon Crawl Classics",
-    path: "/product/giant-moth-that-awaits-us-all",
-    description: "An End of the World Adventure for DCC",
-    title: "The Giant Moth that Awaits Us All",
-  },
-  {
-    imageSrc: "/PaleConjureCover.jpg",
-    imageAlt: "Pale Conjure, an adventure for Cthulhu Eternal",
-    path: "/product/pale-conjure/",
-    description: "A Jazz Age Adventure for Cthulhu Eternal",
-    title: "Pale Conjure",
-  },
-];
+import Emails from "../components/Emails.astro";
+import FeaturedProducts from "../components/FeaturedProducts.astro";
+import NewsletterDialog from "../components/NewsletterDialog.astro";
 ---
 
 <!doctype html>
@@ -35,139 +13,30 @@ const featuredProducts = [
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
-      .product-home {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1em;
-        max-width: 600px;
-      }
-
-      .product-home p {
-        text-align: center;
-      }
-      .product-home--image {
-        transition: transform 0.2s ease-in-out;
-      }
-      .product-home--image:hover {
-        transform: scale(1.01);
-      }
-
-      .product-home--container {
-        margin: 1em;
-      }
-      @media (min-width: 768px) {
-        .product-home--container {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1em;
-          margin: 0 1em;
-        }
-      }
-
-      .sell-me-a-grotto {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        margin-bottom: 1em;
-      }
-
-      .dialog-trigger {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        padding: 0.75rem 1.5rem;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        z-index: 2;
-        transition: transform 0.2s ease-in-out;
-      }
-
-      .dialog-trigger:hover {
-        transform: scale(1.05);
-      }
-
-      .close-button {
-        margin: 1em 0;
-        outline: none;
-        border: 1px solid #333;
-        background: none;
-        cursor: pointer;
+      main {
+        width: 100%;
       }
       .home-description {
-        margin: auto 1em;
+        font-size: 0.8em;
+        margin: var(--margin-full);
       }
     </style>
   </head>
   <body>
     <Header />
-    <main class="full-width">
-      <dialog id="newsletter-dialog">
-        <div class="sell-me-a-grotto">
-          <h2>Stay in the loop</h2>
-          <ButtondownForm />
-          <button class="close-button" type="button" id="close-button"
-            >Close</button
-          >
-        </div>
-      </dialog>
-      <button class="dialog-trigger"> Stay in the Loop </button>
-      <div class="product-home--container">
-        {
-          featuredProducts.map((product, index) => (
-            <div class="product-home">
-              <a href={product.path}>
-                <img
-                  src={product.imageSrc}
-                  class="product-home--image"
-                  alt={product.imageAlt}
-                  width="600"
-                  height="775"
-                  loading={index === 0 ? "eager" : "lazy"}
-                />
-              </a>
-              <p>
-                {product.description}
-                <br />
-              </p>
-            </div>
-          ))
-        }
-      </div>
+    <main>
+      <FeaturedProducts />
+      <Emails />
       <p class="home-description">
         {SITE_TITLE} is a purveyor of fine RPG products, production, and web experiences.
+        We specialize in old school or traditional roleplaying adventures, and love
+        a system with a generous or open 3rd party license - think Dungeon Crawl
+        Classics, Old School Essentials, or Cthulhu Eternal.
       </p>
+      <NewsletterDialog />
     </main>
     <Footer />
   </body>
 </html>
 ---
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // get dialog trigger
-    const dialogTrigger = document.querySelector(".dialog-trigger");
-    // get dialog
-    const dialog = document.getElementById(
-      "newsletter-dialog"
-    ) as HTMLDialogElement;
 
-    // add event listener to close button
-    const closeButton = dialog.querySelector("#close-button");
-    console.log(closeButton, dialog);
-    closeButton?.addEventListener("click", (e) => {
-      console.log(e);
-      dialog.close();
-    });
-
-    // add event listener to dialog trigger
-    dialogTrigger?.addEventListener("click", () => {
-      dialog.showModal();
-    });
-  });
-</script>

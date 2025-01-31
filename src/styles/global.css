@@ -30,10 +30,11 @@
   --content-width: 720px;
   --error-red: #ff0033;
   --purped: #6f42c1;
+  --margin-full: 1rem;
 }
 
 ::backdrop {
-  background-color: rgba(138, 8, 190, 0.75);
+  background-color: rgba(51, 1, 71, 0.75);
 }
 
 body {
@@ -49,11 +50,11 @@ body {
   font-size: 20px;
   line-height: 1.7;
 }
-main:not(.full-width) {
-  width: var(--content-width);
-  max-width: calc(100% - 2em);
+main {
   margin: auto;
+  max-width: calc(100% - 2em);
   padding: 3em 1em;
+  width: var(--content-width);
 }
 
 h1,
@@ -97,10 +98,10 @@ a:hover {
   color: var(--accent);
 }
 p {
-  margin-bottom: 1em;
+  margin-block-end: 1em;
 }
 .prose p {
-  margin-bottom: 2em;
+  margin-block-end: 2em;
 }
 textarea {
   width: 100%;
