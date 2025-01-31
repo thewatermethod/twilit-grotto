@@ -1,0 +1,64 @@
+---
+import ButtondownForm from "./ButtondownForm.astro";
+---
+
+<dialog id="newsletter-dialog">
+  <div class="sell-me-a-grotto">
+    <h2>Stay in the loop</h2>
+    <ButtondownForm />
+    <button class="close-button" type="button" id="close-button">Close</button>
+  </div>
+</dialog>
+<button class="dialog-trigger"> Stay in the Loop </button>
+<style>
+  /* .sell-me-a-grotto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-bottom: 1em;
+  } */
+
+  .dialog-trigger {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .dialog-trigger:hover {
+    transform: scale(1.05);
+  }
+
+  .close-button {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // get dialog trigger
+    const dialogTrigger = document.querySelector(".dialog-trigger");
+    // get dialog el
+    const dialog = document.getElementById(
+      "newsletter-dialog"
+    ) as HTMLDialogElement;
+    // grab close button in DOM
+    const closeButton = dialog.querySelector("#close-button");
+    // add event listener to close button
+    closeButton?.addEventListener("click", (e) => dialog.close());
+    // add event listener to dialog trigger
+    dialogTrigger?.addEventListener("click", () => dialog.showModal());
+  });
+</script>
