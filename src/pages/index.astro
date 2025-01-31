@@ -7,6 +7,13 @@ import ButtondownForm from "../components/ButtondownForm.astro";
 
 const featuredProducts = [
   {
+    imageSrc: "/PriceCoverOptimized.jpg",
+    imageAlt: "The Price of Progress, an adventure for Cthulhu Eternal",
+    path: "/product/price-of-progress",
+    description: "An Space Age Adventure for Cthulhu Eternal",
+    title: "The Price of Progress",
+  },
+  {
     imageSrc: "/MothCoverOptimized.jpg",
     imageAlt: "The Giant Moth that Awaits Us All for Dungeon Crawl Classics",
     path: "/product/giant-moth-that-awaits-us-all",
@@ -44,7 +51,19 @@ const featuredProducts = [
         transition: transform 0.2s ease-in-out;
       }
       .product-home--image:hover {
-        transform: scale(1.05);
+        transform: scale(1.01);
+      }
+
+      .product-home--container {
+        margin: 1em;
+      }
+      @media (min-width: 768px) {
+        .product-home--container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1em;
+          margin: 0 1em;
+        }
       }
 
       .sell-me-a-grotto {
@@ -52,44 +71,103 @@ const featuredProducts = [
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #333;
-        color: #fff;
         padding: 1rem;
         margin-bottom: 1em;
       }
-      .sell-me-a-grotto h3 {
+
+      .dialog-trigger {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: #333;
         color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        z-index: 2;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .dialog-trigger:hover {
+        transform: scale(1.05);
+      }
+
+      .close-button {
+        margin: 1em 0;
+        outline: none;
+        border: 1px solid #333;
+        background: none;
+        cursor: pointer;
+      }
+      .home-description {
+        margin: auto 1em;
       }
     </style>
   </head>
   <body>
     <Header />
     <main class="full-width">
-      <div class="sell-me-a-grotto">
-        <p>
-          {SITE_TITLE} is a purveyor of fine RPG products, production, and web experiences.
-        </p>
-        <h3>Stay in the loop</h3>
-        <ButtondownForm />
+      <dialog id="newsletter-dialog">
+        <div class="sell-me-a-grotto">
+          <h2>Stay in the loop</h2>
+          <ButtondownForm />
+          <button class="close-button" type="button" id="close-button"
+            >Close</button
+          >
+        </div>
+      </dialog>
+      <button class="dialog-trigger"> Stay in the Loop </button>
+      <div class="product-home--container">
+        {
+          featuredProducts.map((product, index) => (
+            <div class="product-home">
+              <a href={product.path}>
+                <img
+                  src={product.imageSrc}
+                  class="product-home--image"
+                  alt={product.imageAlt}
+                  width="600"
+                  height="775"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </a>
+              <p>
+                {product.description}
+                <br />
+              </p>
+            </div>
+          ))
+        }
       </div>
-      {
-        featuredProducts.map((product) => (
-          <div class="product-home">
-            <a href={product.path}>
-              <img
-                src={product.imageSrc}
-                class="product-home--image"
-                alt={product.imageAlt}
-              />
-            </a>
-            <p>
-              {product.description}
-              <br />
-            </p>
-          </div>
-        ))
-      }
+      <p class="home-description">
+        {SITE_TITLE} is a purveyor of fine RPG products, production, and web experiences.
+      </p>
     </main>
     <Footer />
   </body>
 </html>
+---
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // get dialog trigger
+    const dialogTrigger = document.querySelector(".dialog-trigger");
+    // get dialog
+    const dialog = document.getElementById(
+      "newsletter-dialog"
+    ) as HTMLDialogElement;
+
+    // add event listener to close button
+    const closeButton = dialog.querySelector("#close-button");
+    console.log(closeButton, dialog);
+    closeButton?.addEventListener("click", (e) => {
+      console.log(e);
+      dialog.close();
+    });
+
+    // add event listener to dialog trigger
+    dialogTrigger?.addEventListener("click", () => {
+      dialog.showModal();
+    });
+  });
+</script>

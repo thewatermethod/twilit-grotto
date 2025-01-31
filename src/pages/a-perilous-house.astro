@@ -1,0 +1,29 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import PageTitle from "../components/PageTitle.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import ContactForm from "../components/ContactForm.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+
+    <main>
+      <PageTitle>A House Perilous</PageTitle>
+      <p>
+        If you're an artist, editor, or writer working in the tabletop space,
+        send me a link to your portfolio or drop me a line! I'm always looking
+        for collaborators.
+      </p>
+      <ContactForm />
+    </main>
+    <Footer />
+  </body>
+</html>
